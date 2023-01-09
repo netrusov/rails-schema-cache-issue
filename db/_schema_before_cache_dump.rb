@@ -18,7 +18,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_09_121035) do
   create_table "users", force: :cascade do |t|
     t.text "first_name"
     t.text "last_name"
-    t.text "full_name", default: -> { "((first_name || ' '::text) || last_name)" }
+    t.virtual "full_name", type: :text, as: "((first_name || ' '::text) || last_name)", stored: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
